@@ -1,4 +1,7 @@
-class Button():
+"""Core classes of GTA Orange Python wrapper
+"""
+
+class Key():
     """Enum-like class with attributes representing all buttons/keys which on which GTA Orange reacts
     """
     ESCAPE = 0x1B
