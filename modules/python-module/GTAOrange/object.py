@@ -43,7 +43,7 @@ class Object():
         """Checks if given object IS this object.
 
         Args:
-            veh (GTAOrange.object.Object): object object
+            obj (GTAOrange.object.Object): object object
 
         Returns:
             bool: True if it is the object, False if it isn't the object
@@ -55,9 +55,9 @@ class Object():
 
 
 def create(model, x, y, z, pitch, yaw, roll):
-    """Creates a new marker.
+    """Creates a new object.
 
-    This is the right way to spawn a new vehicle.
+    This is the right way to spawn a new object.
 
     Args:
         model (str OR int): model name OR hash
