@@ -29,6 +29,6 @@ def getDistance(x1, y1, z1, x2, y2=None, z2=None):
         float: distance between given points
     """
     if y2 is None:
-        return math.sqrt((z1 - x1) ^ 2 + (x2 - y1) ^ 2)
+        return math.sqrt(math.pow(z1 - x1, 2) + math.pow(x2 - y1, 2))
     else:
-        return math.sqrt((x1 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2)
+        return math.sqrt(math.pow(x1 - x1, 2) + math.pow(y2 - y1, 2) + math.pow(z2 - z1, 2))
