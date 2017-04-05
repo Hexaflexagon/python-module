@@ -1,21 +1,21 @@
 """Python wrapper for GTA Orange's player functions
 
 Subscribable built-in events:
-+============+========================+=====================================================+
-|    name    | player-local arguments       |         global arguments                      |
-+============+========================+=====================================================+
-| connect    | ip (string)                  | player (Player), ip (string)                  |
-+------------+------------------------+-----------------------------------------------------+
-| disconnect | reason (int)                 | player (Player), reason (int)                 |
-+------------+------------------------+-----------------------------------------------------+
-| command    | arguments (list)             | player (Player), arguments (list)             |
-+------------+------------------------+-----------------------------------------------------+
-| death      | killer (Player)              | player (Player), killer (Player)              |
-+------------+------------------------+-----------------------------------------------------+
-| spawn      | position (tuple with coords) | player (Player), position (tuple with coords) |
-+------------+------------------------+-----------------------------------------------------+
-| pressedkey | key_id (int; hex-code)       | player (Player), key_id (int; hex-code)       |
-+------------+------------------------+-----------------------------------------------------+
++============+====================================+=====================================================+
+|    name    | player-local arguments             |         global arguments                            |
++============+====================================+=====================================================+
+| connect    | ip (string)                        | player (Player), ip (string)                        |
++------------+------------------------------------+-----------------------------------------------------+
+| disconnect | reason (int)                       | player (Player), reason (int)                       |
++------------+------------------------------------+-----------------------------------------------------+
+| command    | arguments (list)                   | player (Player), arguments (list)                   |
++------------+------------------------------------+-----------------------------------------------------+
+| death      | killer (Player), weapon hash (int) | player (Player), killer (Player), weapon hash (int) |
++------------+------------------------------------+-----------------------------------------------------+
+| spawn      | position (tuple with coords)       | player (Player), position (tuple with coords)       |
++------------+------------------------------------+-----------------------------------------------------+
+| pressedkey | key_id (int; hex-code)             | player (Player), key_id (int; hex-code)             |
++------------+------------------------------------+-----------------------------------------------------+
 
 Subscribable events from other core libraries:
 +================+========================+====================================+
@@ -516,12 +516,12 @@ def _onCommand(*args):
     trigger("command", player, *args)
     player.trigger("connect", *args)
 
-def _onDeath(player_id, killer_id):
+def _onDeath(player_id, killer_id, weapon):
     player = getByID(player_id)
     killer = getByID(killer_id)
 
-    trigger("death", player, killer)
-    player.trigger("death", killer)
+    trigger("death", player, killer, weapon)
+    player.trigger("death", killer, weapon)
 
 def _onSpawn(player_id, x, y, z):
     player = getByID(player_id)
