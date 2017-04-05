@@ -14,6 +14,8 @@ Subscribable built-in events:
 +------------+------------------------+-----------------------------------------------------+
 | spawn      | position (tuple with coords) | player (Player), position (tuple with coords) |
 +------------+------------------------+-----------------------------------------------------+
+| pressedkey | key_id (int; hex-code)       | player (Player), key_id (int; hex-code)       |
++------------+------------------------+-----------------------------------------------------+
 
 Subscribable events from other core libraries:
 +================+========================+====================================+
@@ -527,9 +529,16 @@ def _onSpawn(player_id, x, y, z):
     trigger("spawn", player, (x, y, z))
     player.trigger("spawn", (x, y, z))
 
+def _onKeyPress(player_id, key_id):
+    player = getByID(player_id)
+
+    trigger("pressedkey", player, key_id)
+    player.trigger("pressedkey", key_id)
+
 
 __orange__.AddServerEvent(_onConnect, "PlayerConnect")
 __orange__.AddServerEvent(_onDisconnect, "PlayerDisconnect")
 __orange__.AddServerEvent(_onCommand, "PlayerCommand")
 __orange__.AddServerEvent(_onDeath, "PlayerDead")
 __orange__.AddServerEvent(_onSpawn, "PlayerSpawn")
+__orange__.AddServerEvent(_onKeyPress, "keyPress")
