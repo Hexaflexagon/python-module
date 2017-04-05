@@ -1,15 +1,19 @@
 """Python wrapper for GTA Orange's player functions
 
 Subscribable built-in events:
-+============+========================+===================================+
-|    name    | player-local arguments |         global arguments          |
-+============+========================+===================================+
-| connect    | ip (string)            | player (Player), ip (string)      |
-+------------+------------------------+-----------------------------------+
-| disconnect | reason (int)           | player (Player), reason (int)     |
-+------------+------------------------+-----------------------------------+
-| command    | arguments (list)       | player (Player), arguments (list) |
-+------------+------------------------+-----------------------------------+
++============+========================+=====================================================+
+|    name    | player-local arguments       |         global arguments                      |
++============+========================+=====================================================+
+| connect    | ip (string)                  | player (Player), ip (string)                  |
++------------+------------------------+-----------------------------------------------------+
+| disconnect | reason (int)                 | player (Player), reason (int)                 |
++------------+------------------------+-----------------------------------------------------+
+| command    | arguments (list)             | player (Player), arguments (list)             |
++------------+------------------------+-----------------------------------------------------+
+| death      | killer (Player)              | player (Player), killer (Player)              |
++------------+------------------------+-----------------------------------------------------+
+| spawn      | position (tuple with coords) | player (Player), position (tuple with coords) |
++------------+------------------------+-----------------------------------------------------+
 
 Subscribable events from other core libraries:
 +================+========================+====================================+
@@ -510,7 +514,22 @@ def _onCommand(*args):
     trigger("command", player, *args)
     player.trigger("connect", *args)
 
+def _onDeath(player_id, killer_id):
+    player = getByID(player_id)
+    killer = getByID(killer_id)
+
+    trigger("death", player, killer)
+    player.trigger("death", killer)
+
+def _onSpawn(player_id, x, y, z):
+    player = getByID(player_id)
+
+    trigger("spawn", player, (x, y, z))
+    player.trigger("spawn", (x, y, z))
+
 
 __orange__.AddServerEvent(_onConnect, "PlayerConnect")
 __orange__.AddServerEvent(_onDisconnect, "PlayerDisconnect")
 __orange__.AddServerEvent(_onCommand, "PlayerCommand")
+__orange__.AddServerEvent(_onDeath, "PlayerDead")
+__orange__.AddServerEvent(_onSpawn, "PlayerSpawn")
