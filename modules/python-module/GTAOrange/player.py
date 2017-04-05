@@ -106,7 +106,7 @@ class Player():
         Returns:
             float: distance between player and given coordinates
         """
-        if z is None:
+        if z is not None:
             x1, y1, z1 = self.getPosition()
             return _world.getDistance(x1, y1, z1, x, y, z)
         else:
