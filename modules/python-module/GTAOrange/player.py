@@ -496,7 +496,7 @@ def _onDisconnect(player_id, reason):
     player = getByID(player_id)
 
     trigger("disconnect", player, reason)
-    player.trigger("connect", reason)
+    player.trigger("disconnect", reason)
 
     del __pool[player_id]
 
