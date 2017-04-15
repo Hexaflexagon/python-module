@@ -9,14 +9,13 @@ class Text():
 
     DO NOT GENERATE NEW OBJECTS DIRECTLY! Please use the create() function instead.
 
-    Attributes:
-        id (int): text id
-        ocolor (GTAOrange.color.Color): outline color
-        size (float): font size
-        tcolor (GTAOrange.color.Color): text color
-        x (float): x-coord
-        y (float): y-coord
-        z (float): z-coord
+    @attr   id      int                     text id
+    @attr   ocolor  GTAOrange.color.Color   outline color
+    @attr   size    float                   font size
+    @attr   tcolor  GTAOrange.color.Color   text color
+    @attr   x       float                   x-coord
+    @attr   y       float                   y-coord
+    @attr   z       float                   z-coord
     """
     id = None
     x = None
@@ -31,15 +30,14 @@ class Text():
     def __init__(self, id, text, x, y, z, tcolor=0xFFFFFFFF, ocolor=0xFFFFFFFF, size=20):
         """Initializes a new Text object.
 
-        Args:
-            id (int): text id
-            text (str): message string
-            x (float): x-coord
-            y (float): y-coord
-            z (float): z-coord
-            tcolor (GTAOrange.color.Color, optional): text color
-            ocolor (GTAOrange.color.Color, optional): outline color
-            size (float, optional): font size
+        @param  id      int                     text id
+        @param  text    str                     message string
+        @param  x       float                   x-coord
+        @param  y       float                   y-coord
+        @param  z       float                   z-coord
+        @param  tcolor  GTAOrange.color.Color   text color #optional
+        @param  ocolor  GTAOrange.color.Color   outline color #optional
+        @param  size    float                   font size #optional
         """
         self.id = id
         self.x = x
@@ -58,40 +56,35 @@ class Text():
     def getID(self):
         """Returns text id.
 
-        Returns:
-            int: text id
+        @returns    int     text id
         """
         return self.id
 
     def getPosition(self):
         """Returns current position.
 
-        Returns:
-            tuple: position tuple with 3 values
+        @returns    tuple   position tuple with 3 values
         """
         return (self.x, self.y, self.z)
 
     def getColors(self):
         """Returns current colors.
 
-        Returns:
-            tuple: two elements, first is text color, second is outline color
+        @returns    tuple   two elements, first is text color, second is outline color
         """
         return (self.tcolor, self.ocolor)
 
     def getSize(self):
         """Returns current size.
 
-        Returns:
-            float: size
+        @returns    float   size
         """
         return self.size
 
     def getText(self):
         """Returns current text.
 
-        Returns:
-            str: message string
+        @returns    str     message string
         """
         return self.text
 
@@ -101,17 +94,15 @@ def create(text, x, y, z, tcolor=0xFFFFFFFF, ocolor=0xFFFFFFFF, size=20):
 
     This is the right way to spawn a new text.
 
-    Args:
-        text (str): message string
-        x (float): x-coord
-        y (float): y-coord
-        z (float): z-coord
-        tcolor (GTAOrange.color.Color, optional): text color
-        ocolor (GTAOrange.color.Color, optional): outline color
-        size (float, optional): font size
+    @param  text    str                     message string
+    @param  x       float                   x-coord
+    @param  y       float                   y-coord
+    @param  z       float                   z-coord
+    @param  tcolor  GTAOrange.color.Color   text color #optional
+    @param  ocolor  GTAOrange.color.Color   outline color #optional
+    @param  size    float                   font size #optional
 
-    Returns:
-        GTAOrange.text.Text: text object
+    @returns    GTAOrange.text.Text     text object
     """
     global __pool
 
@@ -124,14 +115,11 @@ def create(text, x, y, z, tcolor=0xFFFFFFFF, ocolor=0xFFFFFFFF, size=20):
 def deleteByID(id):
     """Deletes a text object by the given id.
 
-    Args:
-        id (int): text id
+    @param  id      int     text id
 
-    Returns:
-        bool: True on success, False on failure
+    @returns    bool    True on success, False on failure
 
-    Raises:
-        TypeError: raises if text id is not int
+    @raises     TypeError   raises if text id is not int
     """
     global __pool
 
@@ -148,14 +136,11 @@ def deleteByID(id):
 def getByID(id):
     """Returns text object by given id.
 
-    Args:
-        id (int): text id
+    @param  id      int     text id
 
-    Returns:
-        GTAOrange.text.Text: text object (False on failure)
+    @returns    GTAOrange.text.Text     text object (False on failure)
 
-    Raises:
-        TypeError: raises if text id is not int
+    @raises     TypeError   raises if text id is not int
     """
     global __pool
 
@@ -172,7 +157,6 @@ def getAll():
 
     WARNING! Can cause heavy load on some servers. If you can avoid using it, don't use it!
 
-    Returns:
-        dict: text dictionary
+    @returns    dict    text dictionary
     """
     return __pool

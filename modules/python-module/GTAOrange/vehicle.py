@@ -40,10 +40,9 @@ class Vehicle():
 
     DO NOT GENERATE NEW OBJECTS DIRECTLY! Please use the create() function instead.
 
-    Attributes:
-        id (int): vehicle id
-        meta (dict): for future releases
-        texts (dict): texts added to the vehicle
+    @attr   id      int     vehicle id
+    @attr   meta    dict    for future releases
+    @attr   texts   dict    texts added to the vehicle
     """
     id = None
     model = None
@@ -55,8 +54,7 @@ class Vehicle():
     def __init__(self, id, model=None):
         """Initializes a new Vehicle object.
 
-        Args:
-            id (int): vehicle id
+        @param  id      int     vehicle id
         """
         self.id = id
         self.model = model
@@ -64,14 +62,12 @@ class Vehicle():
     def attachBlip(self, name="Vehicle", scale=0.6, color=None, sprite=None):
         """Creates and attaches a blip to the vehicle.
 
-        Args:
-            name (str, optional): blip name
-            scale (float, optional): blip scale
-            color (GTAOrange.blip.Color, optional): blip color (see blip library -> classes at the eof)
-            sprite (GTAOrange.blip.Sprite, optional): blip sprite (see blip library -> classes at the eof)
+        @param  name    str                     blip name #optional
+        @param  scale   float                   blip scale #optional
+        @param  color   GTAOrange.blip.Color    blip color (see blip library -> classes at the eof) #optional
+        @param  sprite  GTAOrange.blip.Sprite   blip sprite (see blip library -> classes at the eof) #optional
 
-        Returns:
-            GTAOrange.blip.Blip: generated blip
+        @returns    GTAOrange.blip.Blip     generated blip
         """
         from GTAOrange import blip as _blip
 
@@ -83,17 +79,15 @@ class Vehicle():
     def attachText(self, text, x=0, y=0, z=0, tcolor=0xFFFFFFFF, ocolor=0xFFFFFFFF, size=20):
         """Creates and attaches a 3d text to the vehicle.
 
-        Args:
-            text (str): text which will be added
-            x (int, optional): x-coord
-            y (int, optional): y-coord
-            z (int, optional): z-coord
-            tcolor (int, optional): text color
-            ocolor (int, optional): outline color
-            size (int, optional): font size
+        @param  text    str     text which will be added
+        @param  x       int     x-coord #optional
+        @param  y       int     y-coord #optional
+        @param  z       int     z-coord #optional
+        @param  tcolor  int     text color #optional
+        @param  ocolor  int     outline color #optional
+        @param  size    int     font size #optional
 
-        Returns:
-            GTAOrange.text.Text: Description
+        @returns    GTAOrange.text.Text     text object
         """
         txt = _text.create(text, 0, 0, 72, tcolor, ocolor, size)
         txt.attachToVeh(self, x, y, z)
@@ -109,13 +103,11 @@ class Vehicle():
     def distanceTo(self, x, y, z=None):
         """Returns the distance from vehicle to the given coordinates.
 
-        Args:
-            x (float): x-coord
-            y (float): y-coord
-            z (float, optional): z-coord
+        @param  x       float   x-coord
+        @param  y       float   y-coord
+        @param  z       float   z-coord #optional
 
-        Returns:
-            float: distance between vehicle and given coordinates
+        @returns    float   distance between vehicle and given coordinates
         """
         if z is not None:
             x1, y1, z1 = self.getPosition()
@@ -127,35 +119,30 @@ class Vehicle():
     def getID(self):
         """Returns vehicle id.
 
-        Returns:
-            int: vehicle id
+        @returns    int     vehicle id
         """
         return self.id
 
     def getModel(self):
         """Returns model string.
 
-        Returns:
-            str: model string (e.g. "Burrito") (returns None, when the vehicle wasn't created in Python!)
+        @returns    str     model string (e.g. "Burrito") (returns None, when the vehicle wasn't created in Python!)
         """
         return self.model
 
     def getPosition(self):
         """Returns current vehicle position.
 
-        Returns:
-            tuple: position tuple with 3 values
+        @returns    tuple   position tuple with 3 values
         """
         return __orange__.GetVehiclePosition(self.id)
 
     def equals(self, veh):
         """Checks if given object IS this object.
 
-        Args:
-            veh (GTAOrange.vehicle.Vehicle): vehicle object
+        @param  veh     GTAOrange.vehicle.Vehicle   vehicle object
 
-        Returns:
-            bool: True if it is the object, False if it isn't the object
+        @returns    bool    True if it is the object, False if it isn't the object
         """
         if isinstance(veh, Vehicle):
             return self.id == veh.id
@@ -165,9 +152,8 @@ class Vehicle():
     def on(self, event, cb):
         """Subscribes for an event only for this vehicle.
 
-        Args:
-            event (string): event name
-            cb (function): callback function
+        @param  event   string      event name
+        @param  cb      function    callback function
         """
         if event in self._ehandlers.keys():
             self._ehandlers[event].append(_event.Event(cb))
@@ -178,9 +164,8 @@ class Vehicle():
     def trigger(self, event, *args):
         """Triggers an event for the event handlers subscribing to this specific vehicle.
 
-        Args:
-            event (string): event name
-            *args: arguments
+        @param  event   string  event name
+        @param  *args   *args   arguments
         """
         if event in self._ehandlers.keys():
             for handler in self._ehandlers[event]:
@@ -192,15 +177,13 @@ def create(model, x, y, z, h):
 
     This is the right way to spawn a new vehicle.
 
-    Args:
-        model (str OR int): model name OR hash
-        x (float): x-coord
-        y (float): y-coord
-        z (float): z-coord
-        h (float): heading
+    @param  model   str OR int  model name OR hash
+    @param  x       float       x-coord
+    @param  y       float       y-coord
+    @param  z       float       z-coord
+    @param  h       float       heading
 
-    Returns:
-        GTAOrange.vehicle.Vehicle: vehicle object
+    @returns    GTAOrange.vehicle.Vehicle   vehicle object
     """
     veh = Vehicle(__orange__.CreateVehicle(model, x, y, z, h), model)
     __pool[veh.id] = veh
@@ -212,14 +195,11 @@ def create(model, x, y, z, h):
 def deleteByID(id):
     """Deletes a vehicle object by the given id.
 
-    Args:
-        id (int): vehicle id
+    @param  id      int     vehicle id
 
-    Returns:
-        bool: True on success, False on failure
+    @returns    bool    True on success, False on failure
 
-    Raises:
-        TypeError: raises if vehicle id is not int
+    @raises     TypeError   raises if vehicle id is not int
     """
     global __pool
 
@@ -238,13 +218,11 @@ def deleteByID(id):
 def exists(id):
     """Checks if a vehicle with the given id exists internally.
 
-    TODO: Unimplemented atm.
+    @todo Unimplemented atm.
 
-    Args:
-        id (int): vehicle id
+    @param  id      int     vehicle id
 
-    Returns:
-        bool: True on yes, False on no
+    @returns    bool    True on yes, False on no
     """
     # return __orange__.VehicleExists(id)
     return True
@@ -253,14 +231,11 @@ def exists(id):
 def getByID(id):
     """Returns vehicle object by given id.
 
-    Args:
-        id (int): vehicle id
+    @param  id      int     vehicle id
 
-    Returns:
-        GTAOrange.vehicle.Vehicle: vehicle object (False on failure)
+    @returns    GTAOrange.vehicle.Vehicle   vehicle object (False on failure)
 
-    Raises:
-        TypeError: raises if vehicle id is not int
+    @raises     TypeError   raises if vehicle id is not int
     """
     global __pool
 
@@ -282,8 +257,7 @@ def getAll():
 
     WARNING! Can cause heavy load on some servers. If you can avoid using it, don't use it!
 
-    Returns:
-        dict: vehicle dictionary
+    @returns    dict    vehicle dictionary
     """
     return __pool
 
@@ -291,9 +265,8 @@ def getAll():
 def on(event, cb):
     """Subscribes for an event for all vehicles.
 
-    Args:
-        event (string): event name
-        cb (function): callback function
+    @param  event   string      event name
+    @param  cb      function    callback function
     """
     if event in __ehandlers.keys():
         __ehandlers[event].append(_event.Event(cb))
@@ -305,9 +278,8 @@ def on(event, cb):
 def trigger(event, *args):
     """Triggers an event for all vehicles.
 
-    Args:
-        event (string): event name
-        *args: arguments
+    @param  event   string  event name
+    @param  *args   *args   arguments
     """
     if event in __ehandlers.keys():
         for handler in __ehandlers[event]:

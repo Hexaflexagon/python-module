@@ -11,8 +11,7 @@ class Object():
 
     DO NOT GENERATE NEW OBJECTS DIRECTLY! Please use the create() function instead.
 
-    Attributes:
-        id (int): object id
+    @param  id      int     object id
     """
     id = None
 
@@ -21,8 +20,7 @@ class Object():
     def __init__(self, id):
         """Initializes a new Object object.
 
-        Args:
-            id (int): object id
+        @param  id      int     object id
         """
         self.id = id
 
@@ -34,19 +32,16 @@ class Object():
     def getID(self):
         """Returns object id.
 
-        Returns:
-            int: object id
+        @returns    int     object id
         """
         return self.id
 
     def equals(self, obj):
         """Checks if given object IS this object.
 
-        Args:
-            obj (GTAOrange.object.Object): object object
+        @param  obj     GTAOrange.object.Object     object object
 
-        Returns:
-            bool: True if it is the object, False if it isn't the object
+        @returns    bool    True if it is the object, False if it isn't the object
         """
         if isinstance(obj, Object):
             return self.id == obj.id
@@ -59,17 +54,15 @@ def create(model, x, y, z, pitch, yaw, roll):
 
     This is the right way to spawn a new object.
 
-    Args:
-        model (str OR int): model name OR hash
-        x (float): x-coord
-        y (float): y-coord
-        z (float): z-coord
-        pitch (float): pitch angle (y rotation)
-        yaw (float): yaw angle (z rotation, heading)
-        roll (float): roll angle (x rotation)
+    @param  model   str OR int  model name OR hash
+    @param  x       float       x-coord
+    @param  y       float       y-coord
+    @param  z       float       z-coord
+    @param  pitch   float       pitch angle (y rotation)
+    @param  yaw     float       yaw angle (z rotation, heading)
+    @param  roll    float       roll angle (x rotation)
 
-    Returns:
-        GTAOrange.object.Object: object object
+    @returns    GTAOrange.object.Object     object object
     """
     global __pool
 
@@ -81,14 +74,11 @@ def create(model, x, y, z, pitch, yaw, roll):
 def deleteByID(id):
     """Deletes a object object by the given id.
 
-    Args:
-        id (int): object id
+    @param  id      int     object id
 
-    Returns:
-        bool: True on success, False on failure
+    @returns    bool    True on success, False on failure
 
-    Raises:
-        TypeError: raises if object id is not int
+    @raises     TypeError   raises if object id is not int
     """
     global __pool
 
@@ -105,14 +95,11 @@ def deleteByID(id):
 def getByID(id):
     """Returns object object by given id.
 
-    Args:
-        id (int): object id
+    @param  id      int     object id
 
-    Returns:
-        GTAOrange.object.Object: object object (False on failure)
+    @returns    GTAOrange.object.Object     object object (False on failure)
 
-    Raises:
-        TypeError: raises if object id is not int
+    @raises     TypeError   raises if object id is not int
     """
     global __pool
 
@@ -129,7 +116,6 @@ def getAll():
 
     WARNING! Can cause heavy load on some servers. If you can avoid using it, don't use it!
 
-    Returns:
-        dict: object dictionary
+    @returns    dict    object dictionary
     """
     return __pool

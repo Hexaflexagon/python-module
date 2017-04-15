@@ -32,13 +32,12 @@ class Marker():
 
     DO NOT GENERATE NEW OBJECTS DIRECTLY! Please use the create() function instead.
 
-    Attributes:
-        id (int): marker id
-        x (float): x-coord
-        y (float): y-coord
-        z (float): z-coord
-        h (float): marker height
-        r (float): marker radius
+    @param  id      int     marker id
+    @param  x       float   x-coord
+    @param  y       float   y-coord
+    @param  z       float   z-coord
+    @param  h       float   marker height
+    @param  r       float   marker radius
     """
     id = None
     x = None
@@ -53,13 +52,12 @@ class Marker():
     def __init__(self, id, x, y, z, h, r):
         """Initializes a new Marker object.
 
-        Args:
-            id (int): marker id
-            x (float): x-coord
-            y (float): y-coord
-            z (float): z-coord
-            h (float): marker height
-            r (float): marker radius
+        @param  id      int     marker id
+        @param  x       float   x-coord
+        @param  y       float   y-coord
+        @param  z       float   z-coord
+        @param  h       float   marker height
+        @param  r       float   marker radius
         """
         self.id = id
         self.x = x
@@ -76,13 +74,11 @@ class Marker():
     def distanceTo(self, x, y, z=None):
         """Returns the distance from marker to the given coordinates.
 
-        Args:
-            x (float): x-coord
-            y (float): y-coord
-            z (float, optional): z-coord
+        @param  x       float       x-coord
+        @param  y       float       y-coord
+        @param  z       float       z-coord #optional
 
-        Returns:
-            float: distance between marker and given coordinates
+        @returns    float   distance between marker and given coordinates
         """
         if z is not None:
             x1, y1, z1 = self.getPosition()
@@ -94,25 +90,22 @@ class Marker():
     def getID(self):
         """Returns marker id.
 
-        Returns:
-            int: marker id
+        @returns    int     marker id
         """
         return self.id
 
     def getPosition(self):
         """Returns current marker position.
 
-        Returns:
-            tuple: position tuple with 3 values
+        @returns    tuple   position tuple with 3 values
         """
         return (self.x, self.y, self.z)
 
     def on(self, event, cb):
         """Subscribes for an event only for this marker.
 
-        Args:
-            event (string): event name
-            cb (function): callback function
+        @param  event   string      event name
+        @param  cb      function    callback function
         """
         if event in self._ehandlers.keys():
             self._ehandlers[event].append(_event.Event(cb))
@@ -123,9 +116,8 @@ class Marker():
     def trigger(self, event, *args):
         """Triggers an event for the event handlers subscribing to this specific marker.
 
-        Args:
-            event (string): event name
-            *args: arguments
+        @param  event   string      event name
+        @param  *args   *args       arguments
         """
         if event in self._ehandlers.keys():
             for handler in self._ehandlers[event]:
@@ -137,16 +129,14 @@ def create(x, y, z, h=1, r=1, blip=False):
 
     This is the right way to spawn a new marker.
 
-    Args:
-        x (float): x-coord
-        y (float): y-coord
-        z (float): z-coord
-        h (float, optional): marker height
-        r (float, optional): marker height
-        blip (bool, optional): True if a blip should be created at the marker position, False if not
+    @param  x       float   x-coord
+    @param  y       float   y-coord
+    @param  z       float   z-coord
+    @param  h       float   marker height #optional
+    @param  r       float   marker radius #optional
+    @param  blip    bool    True if a blip should be created at the marker position, False if not #optional
 
-    Returns:
-        GTAOrange.marker.Marker: marker object
+    @returns    GTAOrange.marker.Marker     marker object
     """
     from GTAOrange import blip as _blip
     global __pool
@@ -165,14 +155,11 @@ def create(x, y, z, h=1, r=1, blip=False):
 def deleteByID(id):
     """Deletes a marker object by the given id.
 
-    Args:
-        id (int): marker id
+    @param  id      int     marker id
 
-    Returns:
-        bool: True on success, False on failure
+    @returns    bool    True on success, False on failure
 
-    Raises:
-        TypeError: raises if marker id is not int
+    @raises     TypeError   raises if marker id is not int
     """
     global __pool
 
@@ -190,14 +177,11 @@ def deleteByID(id):
 def getByID(id):
     """Returns marker object by given id.
 
-    Args:
-        id (int): marker id
+    @param  id      int     marker id
 
-    Returns:
-        GTAOrange.marker.Marker: marker object (False on failure)
+    @returns    GTAOrange.marker.Marker     marker object (False on failure)
 
-    Raises:
-        TypeError: raises if marker id is not int
+    @raises     TypeError   raises if marker id is not int
     """
     global __pool
 
@@ -214,8 +198,7 @@ def getAll():
 
     WARNING! Can cause heavy load on some servers. If you can avoid using it, don't use it!
 
-    Returns:
-        dict: marker dictionary
+    @returns    dict    marker dictionary
     """
     return __pool
 
@@ -223,9 +206,8 @@ def getAll():
 def on(event, cb):
     """Subscribes for an event for all markers.
 
-    Args:
-        event (string): event name
-        cb (function): callback function
+    @param  event   string      event name
+    @param  cb      function    callback function
     """
     if event in __ehandlers.keys():
         __ehandlers[event].append(_event.Event(cb))
@@ -237,9 +219,8 @@ def on(event, cb):
 def trigger(event, *args):
     """Triggers an event for all markers.
 
-    Args:
-        event (string): event name
-        *args: arguments
+    @param  event   string  event name
+    @param  *args   *args   arguments
     """
     if event in __ehandlers.keys():
         for handler in __ehandlers[event]:

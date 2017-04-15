@@ -13,9 +13,8 @@ class Blip():
 
     DO NOT GENERATE NEW OBJECTS DIRECTLY! Please use the create() function instead.
 
-    Attributes:
-        id (id): blip id
-        is_global (bool): boolean which says if this blip is displayed to all players or not
+    @param  id          int     blip id
+    @param  is_global   bool    boolean which says if this blip is displayed to all players or not
     """
     id = None
     is_global = None
@@ -25,9 +24,8 @@ class Blip():
     def __init__(self, id, is_global):
         """Initializes a new Blip object.
 
-        Args:
-            id (TYPE): Description
-            is_global (TYPE): Description
+        @param  id          int     blip id
+        @param  is_global   bool    boolean which says if this blip is displayed to all players or not
         """
         self.id = id
         self.is_global = is_global
@@ -35,11 +33,9 @@ class Blip():
     def attachTo(self, dest):
         """Attaches the blip to the vehicle represented by the given vehicle object, or to the player represented by the given player object.
 
-        Args:
-            dest (GTAOrange.player.Player OR GTAOrange.vehicle.Vehicle): player or vehicle object
+        @param  dest    GTAOrange.player.Player OR GTAOrange.vehicle.Vehicle    player or vehicle object
 
-        Returns:
-            bool: True for success, False for failure
+        @returns    bool    True for success, False for failure
         """
         if isinstance(dest, _player.Player):
             __orange__.AttachBlipToPlayer(self.id, dest.id)
@@ -58,13 +54,11 @@ class Blip():
     def distanceTo(self, x, y, z=None):
         """Returns the distance from the blip to the given coordinates.
 
-        Args:
-            x (float): x-coord
-            y (float): y-coord
-            z (float, optional): z-coord
+        @param  x   float   x-coord
+        @param  y   float   y-coord
+        @param  z   float   z-coord #optional
 
-        Returns:
-            float: distance between blip and given coordinates
+        @returns    float   distance between blip and given coordinates
         """
         if z is not None:
             x1, y1, z1 = self.getPosition()
@@ -76,56 +70,49 @@ class Blip():
     def getID(self):
         """Returns blip id.
 
-        Returns:
-            int: blip id
+        @returns    int     blip id
         """
         return self.id
 
     def getPosition(self):
         """Returns current position.
 
-        Returns:
-            tuple: position tuple with 3 values
+        @returns    tuple   position tuple with 3 values
         """
         return __orange__.GetBlipCoords(self.id)
 
     def setColor(self, color):
         """Sets color of the blip.
 
-        Args:
-            color (GTAOrange.blip.Color): blip color
+        @returns    color   GTAOrange.blip.Color    blip color
         """
         __orange__.SetBlipColor(self.id, color)
 
     def setRoute(self, route):
         """Enables/disables routing to blip.
 
-        Args:
-            route (bool): True for routing, False for not
+        @param  route   bool    True for routing, False for not
         """
         __orange__.SetBlipRoute(self.id, route)
 
     def setScale(self, scale):
         """Sets scale of blip.
 
-        Args:
-            scale (float): blip scale
+        @param  scale   float   blip scale
         """
         __orange__.SetBlipScale(self.id, scale)
 
     def setSprite(self, sprite):
         """Sets sprite (texture, icon) of blip.
 
-        Args:
-            sprite (GTAOrange.blip.Sprite): blip sprite
+        @param  sprite  GTAOrange.blip.Sprite   blip sprite
         """
         __orange__.SetBlipSprite(self.id, sprite)
 
     def setShortRange(self, toggle):
         """Sets that blip can be seen only on the short distance.
 
-        Args:
-            toggle (bool): True for yes, False for no
+        @param  toggle  bool    True for yes, False for no
         """
         __orange__.SetBlipShortRange(self.id, toggle)
 
@@ -135,17 +122,15 @@ def create(name, x, y, z, scale=1.0, color=None, sprite=None):
 
     This is the right way to spawn a new blip.
 
-    Args:
-        name (string): name (displayed in the map legend)
-        x (float): x-coord of blip
-        y (float): y-coord of blip
-        z (float): z-coord of blip
-        scale (float, optional): blip scale
-        color (GTAOrange.blip.Color, optional): blip color
-        sprite (GTAOrange.blip.Sprite, optional): blip sprite (texture, icon)
+    @param  name    string                  name (displayed in the map legend)
+    @param  x       float                   x-coord of blip
+    @param  y       float                   y-coord of blip
+    @param  z       float                   z-coord of blip
+    @param  scale   float                   blip scale #optional
+    @param  color   GTAOrange.blip.Color    blip color #optional
+    @param  sprite  GTAOrange.blip.Sprite   blip sprite (texture, icon) #optional
 
-    Returns:
-        GTAOrange.blip.Blip: blip object
+    @returns    GTAOrange.blip.Blip     blip object
     """
     global __pool
 
@@ -158,14 +143,11 @@ def create(name, x, y, z, scale=1.0, color=None, sprite=None):
 def deleteByID(id):
     """Deletes a blip object by the given id.
 
-    Args:
-        id (int): blip id
+    @param  id    int   blip id
 
-    Returns:
-        bool: True on success, False on failure
+    @returns    bool    True on success, False on failure
 
-    Raises:
-        TypeError: raises if blip id is not int
+    @raises TypeError   raises if blip id is not int
     """
     global __pool
 
@@ -182,14 +164,11 @@ def deleteByID(id):
 def getByID(id):
     """Returns blip object by given id.
 
-    Args:
-        id (int): blip id
+    @params id      int     blip id
 
-    Returns:
-        bool: True on success, False on failure
+    @returns    bool    True on success, False on failure
 
-    Raises:
-        TypeError: raises if blip id is not int
+    @raises TypeError   raises if blip id is not int
     """
     global __pool
 
@@ -206,8 +185,7 @@ def getAll():
 
     WARNING! Can cause heavy load on some servers. If you can avoid using it, don't use it!
 
-    Returns:
-        dict: blip dictionary
+    @returns    dict    blip dictionary
     """
     return __pool
 

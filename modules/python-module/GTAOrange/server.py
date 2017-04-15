@@ -16,8 +16,7 @@ __forbidden_event_names = ['serverunload']
 def broadcast(text):
     """Broadcasts a message to all players.
 
-    Args:
-        text (str): message string
+    @param  text    str     message string
     """
     __orange__.Broadcast(text)
 
@@ -25,9 +24,8 @@ def broadcast(text):
 def on(event, cb):
     """Subscribes for an event.
 
-    Args:
-        event (string): event name
-        cb (function): callback function
+    @param  event   string      event name
+    @param  cb      function    callback function
     """
     if event in __ehandlers.keys():
         __ehandlers[event].append(_event.Event(cb))
@@ -39,9 +37,8 @@ def on(event, cb):
 def trigger(event, *args):
     """Triggers an event.
 
-    Args:
-        event (string): event name
-        *args: arguments
+    @param  event   string  event name
+    @param  *args   *args   arguments
     """
     if event in __ehandlers.keys():
         for handler in __ehandlers[event]:
