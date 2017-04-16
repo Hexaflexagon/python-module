@@ -1,6 +1,8 @@
-"""Core classes of GTA Orange Python wrapper
+"""Hash-to-string & string-to-hash conversion classes. Very useful to not get confused with all the ingame items!
 """
 class HashContainer():
+    """Skeleton class for hash-string conversion of ingame GTA5 objects
+    """
     loaded = False
     objects = {}
 
@@ -40,8 +42,12 @@ class HashContainer():
         else:
             return False
 
+
 class Key():
     """Enum-like class with attributes representing all buttons/keys which on which GTA Orange reacts
+
+    Please note that this is no sub class of `HashContainer`, so you can't use the otherwise inherited class methods of it.
+    But that shouldn't be needed at all, anyway.
     """
     ESCAPE = 0x1B
     SPACE = 0x20
@@ -132,29 +138,59 @@ class Key():
     F23 = 0x86
     F24 = 0x87
 
+
 class Weapon(HashContainer):
+    """Enum-like class with attributes representing all ingame weapons.
+    You can use the methods of the `HashContainer` class on this one as well.
+    See the docs for more info.
+    """
     pass
+
 
 class Gadget(HashContainer):
+    """Enum-like class with attributes representing all ingame gadgets.
+    You can use the methods of the `HashContainer` class on this one as well.
+    See the docs for more info.
+    """
     pass
+
 
 class VehicleWeapon(HashContainer):
+    """Enum-like class with attributes representing all ingame vehicle weapons.
+    You can use the methods of the `HashContainer` class on this one as well.
+    See the docs for more info.
+    """
     pass
+
 
 class Explosive(HashContainer):
+    """Enum-like class with attributes representing all ingame explosives.
+    You can use the methods of the `HashContainer` class on this one as well.
+    See the docs for more info.
+    """
     pass
 
+
 class Object(HashContainer):
+    """With this class you can convert object name strings to hashes and vice versa.
+    You can use the methods of the `HashContainer` class on this one as well.
+    See the docs for more info.
+
+    Please note that you've to call `loadHashContainer("Object")` before you can use it properly.
+    """
     pass
+
 
 def loadHashContainer(container):
     if container == "Object":
-        Object.load("./modules/python-module/GTAOrange/objects.json", as_attr=False)
+        Object.load(
+            "./modules/python-module/GTAOrange/objects.json", as_attr=False)
         return Object
 
 
 # autoloaded hash databases
 Weapon.load("./modules/python-module/GTAOrange/weapons.json", "weapons")
 Gadget.load("./modules/python-module/GTAOrange/weapons.json", "gadgets")
-VehicleWeapon.load("./modules/python-module/GTAOrange/weapons.json", "vehicle_weapons")
+VehicleWeapon.load(
+    "./modules/python-module/GTAOrange/weapons.json", "vehicle_weapons")
 Explosive.load("./modules/python-module/GTAOrange/weapons.json", "explosives")
