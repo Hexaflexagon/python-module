@@ -204,7 +204,7 @@ def deleteByID(id):
     global __pool
 
     if isinstance(id, int):
-        if exists(id):
+        if _exists(id):
             if id in __pool.keys():
                 trigger("deletion", __pool[id])
                 del __pool[id]
@@ -213,19 +213,6 @@ def deleteByID(id):
         return False
     else:
         raise TypeError('Vehicle ID must be an integer')
-
-
-def exists(id):
-    """Checks if a vehicle with the given id exists internally.
-
-    @todo Unimplemented atm.
-
-    @param  id      int     vehicle id
-
-    @returns    bool    True on yes, False on no
-    """
-    # return __orange__.VehicleExists(id)
-    return True
 
 
 def getByID(id):
@@ -240,7 +227,7 @@ def getByID(id):
     global __pool
 
     if isinstance(id, int):
-        if exists(id):
+        if _exists(id):
             if id not in __pool.keys():
                 __pool[id] = Vehicle(id)
 
@@ -285,6 +272,10 @@ def trigger(event, *args):
         for handler in __ehandlers[event]:
             handler.getCallback()(*args)
 
+
+def _exists(id):
+    # return __orange__.VehicleExists(id)
+    return True
 
 def _onPlayerEntered(player_id, vehicle_id):
     player = _player.getByID(player_id)
