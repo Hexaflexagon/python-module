@@ -163,9 +163,11 @@ def createBlipForAll(name, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=No
     """
     global __pool
 
-    blip = Blip(__orange__.CreateBlipForAll(name, x, y, z, scale, color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD))
+    blip = Blip(__orange__.CreateBlipForAll(name, x, y, z, scale,
+                                            color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD))
     __pool[blip.id] = blip
     return blip
+
 
 def createBlipForPlayerOnly(name, player, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=None,):
     """Creates a new blip which only the specified player can see.
@@ -185,9 +187,11 @@ def createBlipForPlayerOnly(name, player, x=0.0, y=0.0, z=0.0, scale=1.0, color=
     """
     global __pool
 
-    blip = Blip(__orange__.CreateBlipForPlayer(player.id, name, x, y, z, scale, color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD), player)
+    blip = Blip(__orange__.CreateBlipForPlayer(player.id, name, x, y, z, scale,
+                                               color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD), player)
     __pool[blip.id] = blip
     return blip
+
 
 def deleteByID(id):
     """Deletes a blip object by the given id.
@@ -222,9 +226,12 @@ def getByID(id):
     global __pool
 
     if isinstance(id, int):
-        if id in __pool.keys():
+        if _exists(id):
+            if id not in __pool.keys():
+                __pool[id] = Blip(id)
             return __pool[id]
-        return False
+        else:
+            return False
     else:
         raise TypeError('Blip ID must be an integer')
 
@@ -237,6 +244,10 @@ def getAll():
     @returns    dict    blip dictionary
     """
     return __pool
+
+
+def _exists(id):
+    return True
 
 
 class Color():
