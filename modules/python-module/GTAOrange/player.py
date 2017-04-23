@@ -326,19 +326,6 @@ def broadcast(msg, color):
     __orange__.BroadcastClientMessage(msg, color)
 
 
-def exists(id):
-    """Checks if a player with the given id exists internally.
-
-    @todo   Unimplemented atm.
-
-    @param  id      int     player id
-
-    @returns    bool    True on yes, False on no
-    """
-    # return __orange__.PlayerExists(id)
-    return True
-
-
 def getByID(id):
     """Returns player object by given id.
 
@@ -351,7 +338,7 @@ def getByID(id):
     global __pool
 
     if isinstance(id, int):
-        if exists(id):
+        if _exists(id):
             if id not in __pool.keys():
                 __pool[id] = Player(id)
             return __pool[id]
@@ -417,6 +404,11 @@ def triggerClient(event, *args):
     __orange__.TriggerClientEvent(-1, event, list(args))
 
 
+def _exists(id):
+    # return __orange__.PlayerExists(id)
+    return True
+
+
 def _onConnect(player_id, ip):
     player = getByID(player_id)
 
@@ -464,6 +456,7 @@ def _onKeyPress(player_id, key_id):
 
     trigger("pressedkey", player, key_id)
     player.trigger("pressedkey", key_id)
+
 
 def _onClientEvent(player_id, event_name, *args):
     player = getByID(player_id)
