@@ -167,9 +167,7 @@ def deleteByID(id):
         if id in __pool.keys():
             trigger("deletion", __pool[id])
             del __pool[id]
-            return __orange__.DeleteMarker(id)
-        else:
-            return False
+        return __orange__.DeleteMarker(id)
     else:
         raise TypeError('Marker ID must be an integer')
 
@@ -189,6 +187,7 @@ def getByID(id):
         if _exists(id):
             if id not in __pool.keys():
                 __pool[id] = Marker(id)
+                trigger("creation", __pool[id])
             return __pool[id]
         else:
             return False
