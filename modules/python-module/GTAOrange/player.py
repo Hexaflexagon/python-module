@@ -16,7 +16,7 @@ Subscribable built-in events:
 +-------------+------------------------------------+-----------------------------------------------------+
 | pressedkey  | key_id (int; hex-code)             | player (Player), key_id (int; hex-code)             |
 +-------------+------------------------------------+-----------------------------------------------------+
-| clientevent | *args (*args)                      | player (Player), *args (*args)                      |
+| clientevent | event_name (string), *args (*args) | player (Player), event_name (string), *args (*args) |
 +-------------+------------------------------------+-----------------------------------------------------+
 
 Subscribable events from other core libraries:
@@ -465,11 +465,11 @@ def _onKeyPress(player_id, key_id):
     trigger("pressedkey", player, key_id)
     player.trigger("pressedkey", key_id)
 
-def _onClientEvent(player_id, *args):
+def _onClientEvent(player_id, event_name, *args):
     player = getByID(player_id)
 
-    trigger("clientevent", player, *args)
-    player.trigger("clientevent", *args)
+    trigger("clientevent", player, event_name, *args)
+    player.trigger("clientevent", event_name, *args)
 
 
 __orange__.AddServerEvent(_onConnect, "PlayerConnect")
