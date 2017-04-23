@@ -1,11 +1,22 @@
 """Python wrapper for GTA Orange's blip functions
+
+Subscribable built-in events:
++===============+=========================+====================================+
+|     name      | vehicle-local arguments |          global arguments          |
++===============+=========================+====================================+
+| creation      | ---                     | blip (Blip)                        |
++---------------+-------------------------+------------------------------------+
+| deletion      | ---                     | blip (Blip)                        |
++---------------+-------------------------+------------------------------------+
 """
 import __orange__
 from GTAOrange import world as _world
 from GTAOrange import vehicle as _vehicle
 from GTAOrange import player as _player
+from GTAOrange import event as _event
 
 __pool = {}
+__ehandlers = {}
 
 
 class Blip():
@@ -190,6 +201,8 @@ def createBlipForPlayerOnly(name, player, x=0.0, y=0.0, z=0.0, scale=1.0, color=
     blip = Blip(__orange__.CreateBlipForPlayer(player.id, name, x, y, z, scale,
                                                color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD), player)
     __pool[blip.id] = blip
+
+    trigger("creation", blip)
     return blip
 
 
@@ -206,10 +219,9 @@ def deleteByID(id):
 
     if isinstance(id, int):
         if id in __pool.keys():
+            trigger("deletion", __pool[id])
             del __pool[id]
-            return __orange__.DeleteBlip(id)
-        else:
-            return False
+        return __orange__.DeleteBlip(id)
     else:
         raise TypeError('Blip ID must be an integer')
 
@@ -229,6 +241,7 @@ def getByID(id):
         if _exists(id):
             if id not in __pool.keys():
                 __pool[id] = Blip(id)
+                trigger("creation", __pool[id])
             return __pool[id]
         else:
             return False
@@ -244,6 +257,30 @@ def getAll():
     @returns    dict    blip dictionary
     """
     return __pool
+
+
+def on(event, cb):
+    """Subscribes for an event for all markers.
+
+    @param  event   string      event name
+    @param  cb      function    callback function
+    """
+    if event in __ehandlers.keys():
+        __ehandlers[event].append(_event.Event(cb))
+    else:
+        __ehandlers[event] = []
+        __ehandlers[event].append(_event.Event(cb))
+
+
+def trigger(event, *args):
+    """Triggers an event for all markers.
+
+    @param  event   string  event name
+    @param  *args   *args   arguments
+    """
+    if event in __ehandlers.keys():
+        for handler in __ehandlers[event]:
+            handler.getCallback()(*args)
 
 
 def _exists(id):
