@@ -37,8 +37,6 @@ from GTAOrange import event as _event
 __pool = {}
 __ehandlers = {}
 
-# attachOwnBlip
-
 
 class Player():
     """Player class
@@ -465,6 +463,12 @@ def _onKeyPress(player_id, key_id):
     trigger("pressedkey", player, key_id)
     player.trigger("pressedkey", key_id)
 
+def _onClientEvent(player_id, *args):
+    player = getByID(player_id)
+
+    trigger("clientevent", player, *args)
+    player.trigger("clientevent", *args)
+
 
 __orange__.AddServerEvent(_onConnect, "PlayerConnect")
 __orange__.AddServerEvent(_onDisconnect, "PlayerDisconnect")
@@ -472,3 +476,4 @@ __orange__.AddServerEvent(_onCommand, "PlayerCommand")
 __orange__.AddServerEvent(_onDeath, "PlayerDead")
 __orange__.AddServerEvent(_onSpawn, "PlayerSpawn")
 __orange__.AddServerEvent(_onKeyPress, "keyPress")
+__orange__.AddServerEvent(_onClientEvent, "serverEvent")
