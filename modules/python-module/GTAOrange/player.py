@@ -60,22 +60,12 @@ class Player():
         """
         self.id = id
 
-    def attachBlip(self, name="Player", scale=1, color=None, sprite=None):
-        """Creates a blip and attaches it to the player afterwards.
+    def attachBlip(self, blip):
+        """Attaches the given blip to the player.
 
-        @param  name    str                     blip name #optional
-        @param  scale   int                     blip scale #optional
-        @param  color   GTAOrange.blip.Color    blip color (see blip library -> classes at the eof) #optional
-        @param  sprite  GTAOrange.blip.Sprite   blip sprite (see blip library -> classes at the eof) #optional
-
-        @returns    GTAOrange.blip.Blip     generated blip
+        @param  GTAOrange.blip.blip     blip object
         """
-        from GTAOrange import blip as _blip
-
-        blip = _blip.create(name, 0, 0, 0, scale, color if color is not None else _blip.Color.ORANGE,
-                            sprite if sprite is not None else _blip.Sprite.STANDARD)
         blip.attachTo(self)
-        return blip
 
     def distanceTo(self, x, y, z=None):
         """Returns the distance from player to the given coordinates.
