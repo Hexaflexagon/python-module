@@ -13,22 +13,30 @@ class Blip():
 
     DO NOT GENERATE NEW OBJECTS DIRECTLY! Please use the create() function instead.
 
-    @param  id          int     blip id
-    @param  is_global   bool    boolean which says if this blip is displayed to all players or not
+    @param  id          int                                                     blip id
+    @param  is_global   bool                                                    boolean which says if this blip is displayed to all players or not
+    @param  visible_to  GTAOrange.player.Player                                 player object if this is a blip only shown to one player, or `None` if it's global
+    @param  attached_to GTAOrange.player.Player OR GTAOrange.vehicle.Vehicle    player/vehicle object the blip is attached to, or `None` if it's not attached to anyone
     """
     id = None
-    is_global = None
+    attached_to = None
+
+    is_global = False
+    visible_to = None
 
     _ehandlers = {}
 
-    def __init__(self, id, is_global):
+    def __init__(self, id, player=None):
         """Initializes a new Blip object.
 
         @param  id          int     blip id
         @param  is_global   bool    boolean which says if this blip is displayed to all players or not
         """
         self.id = id
-        self.is_global = is_global
+
+        if player is not None:
+            self.is_global = True
+            self.player = player
 
     def attachTo(self, dest):
         """Attaches the blip to the vehicle represented by the given vehicle object, or to the player represented by the given player object.
@@ -39,9 +47,11 @@ class Blip():
         """
         if isinstance(dest, _player.Player):
             __orange__.AttachBlipToPlayer(self.id, dest.id)
+            self.attached_to = dest
             return True
         elif isinstance(dest, _vehicle.Vehicle):
             __orange__.AttachBlipToVehicle(self.id, dest.id)
+            self.attached_to = dest
             return True
         else:
             return False
@@ -117,28 +127,67 @@ class Blip():
         __orange__.SetBlipShortRange(self.id, toggle)
 
 
-def create(name, x, y, z, scale=1.0, color=None, sprite=None):
-    """Creates a new blip.
+def create(name, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=None):
+    """Creates a new blip which every player can see.
+
+    This is the right way to spawn a new blip.
+    Shortcut for `GTAOrange.player.createBlipForAll(...)`.
+
+    @param  name        string                  name (displayed in the map legend)
+    @param  x           float                   x-coord of blip #optional
+    @param  y           float                   y-coord of blip #optional
+    @param  z           float                   z-coord of blip #optional
+    @param  scale       float                   blip scale #optional
+    @param  color       GTAOrange.blip.Color    blip color #optional
+    @param  sprite      GTAOrange.blip.Sprite   blip sprite (texture, icon) #optional
+
+    @returns    GTAOrange.blip.Blip     blip object
+    """
+    createBlipForAll(name, x, y, z, scale, color, sprite)
+
+
+def createBlipForAll(name, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=None):
+    """Creates a new blip which every player can see.
 
     This is the right way to spawn a new blip.
 
-    @param  name    string                  name (displayed in the map legend)
-    @param  x       float                   x-coord of blip
-    @param  y       float                   y-coord of blip
-    @param  z       float                   z-coord of blip
-    @param  scale   float                   blip scale #optional
-    @param  color   GTAOrange.blip.Color    blip color #optional
-    @param  sprite  GTAOrange.blip.Sprite   blip sprite (texture, icon) #optional
+    @param  name        string                  name (displayed in the map legend)
+    @param  x           float                   x-coord of blip #optional
+    @param  y           float                   y-coord of blip #optional
+    @param  z           float                   z-coord of blip #optional
+    @param  scale       float                   blip scale #optional
+    @param  color       GTAOrange.blip.Color    blip color #optional
+    @param  sprite      GTAOrange.blip.Sprite   blip sprite (texture, icon) #optional
 
     @returns    GTAOrange.blip.Blip     blip object
     """
     global __pool
 
-    blip = Blip(__orange__.CreateBlipForAll(name, x, y, z, scale,
-                                            color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD), True)
+    blip = Blip(__orange__.CreateBlipForAll(name, x, y, z, scale, color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD))
     __pool[blip.id] = blip
     return blip
 
+def createBlipForPlayerOnly(name, player, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=None,):
+    """Creates a new blip which only the specified player can see.
+
+    This is the right way to spawn a new blip.
+
+    @param  name        string                  name (displayed in the map legend)
+    @param  player      GTAOrange.player.Player player object of player who is able to see it #optional
+    @param  x           float                   x-coord of blip #optional
+    @param  y           float                   y-coord of blip #optional
+    @param  z           float                   z-coord of blip #optional
+    @param  scale       float                   blip scale #optional
+    @param  color       GTAOrange.blip.Color    blip color #optional
+    @param  sprite      GTAOrange.blip.Sprite   blip sprite (texture, icon) #optional
+
+    @returns    GTAOrange.blip.Blip     blip object
+    """
+    global __pool
+
+    blip = Blip(__orange__.CreateBlipForPlayer(player.id, name, x, y, z, scale, color if color is not None else Color.ORANGE, sprite if sprite is not None else Sprite.STANDARD), player)
+    __pool[blip.id] = blip
+    return blip
 
 def deleteByID(id):
     """Deletes a blip object by the given id.
