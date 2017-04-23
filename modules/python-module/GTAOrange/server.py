@@ -13,13 +13,6 @@ from GTAOrange import event as _event
 __ehandlers = {}
 __forbidden_event_names = ['serverunload']
 
-def broadcast(text):
-    """Broadcasts a message to all players.
-
-    @param  text    str     message string
-    """
-    __orange__.Broadcast(text)
-
 
 def on(event, cb):
     """Subscribes for an event.
