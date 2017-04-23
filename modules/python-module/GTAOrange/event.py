@@ -8,8 +8,7 @@ _current = 0
 class Event():
     """Event class
 
-    Attributes:
-        id (int): event id
+    @param  id      int     event id
     """
     id = None
 
@@ -18,8 +17,7 @@ class Event():
     def __init__(self, cb):
         """Initializes a new event object.
 
-        Args:
-            cb (function): callback function
+        @param  cb      function    callback function
         """
         global _current
 
@@ -31,14 +29,13 @@ class Event():
     def getCallback(self):
         """Returns callback function.
 
-        Returns:
-            function: callback function
+        @returns    function    callback function
         """
         return self._cb
 
     def cancel(self):
         """Cancels an event.
 
-        TODO: UNIMPLEMENTED!
+        @todo   UNIMPLEMENTED!
         """
         pass
