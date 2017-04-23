@@ -104,9 +104,12 @@ def getByID(id):
     global __pool
 
     if isinstance(id, int):
-        if id in __pool.keys():
+        if _exists(id):
+            if id not in __pool.keys():
+                __pool[id] = Object(id)
             return __pool[id]
-        return False
+        else:
+            return False
     else:
         raise TypeError('Object ID must be an integer')
 
@@ -119,3 +122,7 @@ def getAll():
     @returns    dict    object dictionary
     """
     return __pool
+
+
+def _exists(id):
+    return True
