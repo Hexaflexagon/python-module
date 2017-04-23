@@ -1,21 +1,21 @@
 """Python wrapper for GTA Orange's marker functions
 
 Subscribable built-in events:
-+================+=========================+====================================+
-|      name      | vehicle-local arguments |          global arguments          |
-+================+=========================+====================================+
-| playerentered  | player (Player)         | marker (Marker), player (Player)   |
-+----------------+-------------------------+------------------------------------+
-| playerleft     | player (Player)         | marker (Marker), player (Player)   |
-+----------------+-------------------------+------------------------------------+
-| vehicleentered | vehicle (Vehicle)       | marker (Marker), vehicle (Vehicle) |
-+----------------+-------------------------+------------------------------------+
-| vehicleleft    | vehicle (Vehicle)       | marker (Marker), vehicle (Vehicle) |
-+----------------+-------------------------+------------------------------------+
-| creation       | ---                     | marker (Marker)                    |
-+----------------+-------------------------+------------------------------------+
-| deletion       | ---                     | marker (Marker)                    |
-+----------------+-------------------------+------------------------------------+
++================+========================+====================================+
+|      name      | marker-local arguments |          global arguments          |
++================+========================+====================================+
+| playerentered  | player (Player)        | marker (Marker), player (Player)   |
++----------------+------------------------+------------------------------------+
+| playerleft     | player (Player)        | marker (Marker), player (Player)   |
++----------------+------------------------+------------------------------------+
+| vehicleentered | vehicle (Vehicle)      | marker (Marker), vehicle (Vehicle) |
++----------------+------------------------+------------------------------------+
+| vehicleleft    | vehicle (Vehicle)      | marker (Marker), vehicle (Vehicle) |
++----------------+------------------------+------------------------------------+
+| creation       | ---                    | marker (Marker)                    |
++----------------+------------------------+------------------------------------+
+| deletion       | ---                    | marker (Marker)                    |
++----------------+------------------------+------------------------------------+
 """
 import __orange__
 from GTAOrange import world as _world
