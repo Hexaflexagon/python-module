@@ -186,9 +186,12 @@ def getByID(id):
     global __pool
 
     if isinstance(id, int):
-        if id in __pool.keys():
+        if _exists(id):
+            if id not in __pool.keys():
+                __pool[id] = Marker(id)
             return __pool[id]
-        return False
+        else:
+            return False
     else:
         raise TypeError('Marker ID must be an integer')
 
@@ -225,6 +228,10 @@ def trigger(event, *args):
     if event in __ehandlers.keys():
         for handler in __ehandlers[event]:
             handler.getCallback()(*args)
+
+
+def _exists(id):
+    return True
 
 
 def _onPlayerEnteredMarker(player_id, marker_id):
