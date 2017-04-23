@@ -145,11 +145,14 @@ def getByID(id):
     global __pool
 
     if isinstance(id, int):
-        if id in __pool.keys():
+        if _exists(id):
+            if id not in __pool.keys():
+                __pool[id] = Text(id)
             return __pool[id]
-        return False
+        else:
+            return False
     else:
-        raise TypeError('3DText ID must be an integer')
+        raise TypeError('Text ID must be an integer')
 
 
 def getAll():
@@ -160,3 +163,7 @@ def getAll():
     @returns    dict    text dictionary
     """
     return __pool
+
+
+def _exists(id):
+    return True
