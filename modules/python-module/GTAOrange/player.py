@@ -64,8 +64,10 @@ class Player():
         """Attaches the given blip to the player.
 
         @param  GTAOrange.blip.blip     blip object
+
+        @returns    bool    True for success, False for failure
         """
-        blip.attachTo(self)
+        return blip.attachTo(self)
 
     def distanceTo(self, x, y, z=None):
         """Returns the distance from player to the given coordinates.
