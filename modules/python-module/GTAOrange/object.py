@@ -1,6 +1,16 @@
 """Python wrapper for GTA Orange's object functions
+
+Subscribable built-in events:
++===============+=========================+====================================+
+|     name      | vehicle-local arguments |          global arguments          |
++===============+=========================+====================================+
+| creation      | ---                     | object (Object)                    |
++---------------+-------------------------+------------------------------------+
+| deletion      | ---                     | object (Object)                    |
++---------------+-------------------------+------------------------------------+
 """
 import __orange__
+from GTAOrange import event as _event
 
 __pool = {}
 __ehandlers = {}
@@ -66,9 +76,11 @@ def create(model, x, y, z, pitch, yaw, roll):
     """
     global __pool
 
-    object = Object(__orange__.CreateObject(model, x, y, z, pitch, yaw, roll))
-    __pool[object.id] = object
-    return object
+    object_ = Object(__orange__.CreateObject(model, x, y, z, pitch, yaw, roll))
+    __pool[object_.id] = object_
+
+    trigger("creation", object_)
+    return object_
 
 
 def deleteByID(id):
@@ -84,6 +96,7 @@ def deleteByID(id):
 
     if isinstance(id, int):
         if id in __pool.keys():
+            trigger("deletion", __pool[id])
             del __pool[id]
             return __orange__.DeleteObject(id)
         else:
@@ -107,6 +120,7 @@ def getByID(id):
         if _exists(id):
             if id not in __pool.keys():
                 __pool[id] = Object(id)
+                trigger("creation", __pool[id])
             return __pool[id]
         else:
             return False
@@ -122,6 +136,30 @@ def getAll():
     @returns    dict    object dictionary
     """
     return __pool
+
+
+def on(event, cb):
+    """Subscribes for an event for all markers.
+
+    @param  event   string      event name
+    @param  cb      function    callback function
+    """
+    if event in __ehandlers.keys():
+        __ehandlers[event].append(_event.Event(cb))
+    else:
+        __ehandlers[event] = []
+        __ehandlers[event].append(_event.Event(cb))
+
+
+def trigger(event, *args):
+    """Triggers an event for all markers.
+
+    @param  event   string  event name
+    @param  *args   *args   arguments
+    """
+    if event in __ehandlers.keys():
+        for handler in __ehandlers[event]:
+            handler.getCallback()(*args)
 
 
 def _exists(id):
