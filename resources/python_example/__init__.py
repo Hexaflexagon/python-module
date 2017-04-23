@@ -80,7 +80,7 @@ def _onPlayerCommand(player, command):
         if command[1] == "create":
             if player.testveh is None:
                 x, y, z = player.getPosition()
-                
+
                 player.testveh = Vehicle.create(
                     "Burrito", x, y, z, player.getHeading())
                 player.setIntoVeh(player.testveh)

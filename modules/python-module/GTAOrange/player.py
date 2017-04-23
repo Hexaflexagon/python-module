@@ -77,24 +77,6 @@ class Player():
         blip.attachTo(self)
         return blip
 
-    def createBlip(self, name, x, y, z, scale=1, color=None, sprite=None):
-        """Creates a blip which only the player can see.
-
-        @todo   Needs rewrite, when the blip lib is able to handle player-local blips.
-
-        @param  name    string                  blip name
-        @param  x       float                   x-coord of blip
-        @param  y       float                   y-coord of blip
-        @param  z       float                   z-coord of blip
-        @param  scale   int                     blip scale #optional
-        @param  color   GTAOrange.blip.Color    blip color (see blip library -> classes at the eof) #optional
-        @param  sprite  GTAOrange.blip.Sprite   blip sprite (see blip library -> classes at the eof) #optional
-
-        @returns    int     blip id
-        """
-        from GTAOrange import blip as _blip
-        return __orange__.CreateBlipForPlayer(self.id, name, x, y, z, scale, color if color is not None else _blip.Color.ORANGE, sprite if sprite is not None else _blip.Sprite.STANDARD)
-
     def distanceTo(self, x, y, z=None):
         """Returns the distance from player to the given coordinates.
 
