@@ -143,7 +143,7 @@ def create(name, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=None):
 
     @returns    GTAOrange.blip.Blip     blip object
     """
-    createBlipForAll(name, x, y, z, scale, color, sprite)
+    return createBlipForAll(name, x, y, z, scale, color, sprite)
 
 
 def createBlipForAll(name, x=0.0, y=0.0, z=0.0, scale=1.0, color=None, sprite=None):
