@@ -147,6 +147,13 @@ class Vehicle():
 
         return driver
 
+    def getEngineState(self):
+        """Returns vehicle engine state.
+
+        @returns    bool    True for on, False for off
+        """
+        return __orange__.GetVehicleEngineStatus(self.id)
+
     def getID(self):
         """Returns vehicle id.
 
@@ -225,6 +232,15 @@ class Vehicle():
         @param  color2  GTAOrange.hash.VehicleColor     second color
         """
         return __orange__.SetVehicleColours(self.id, color1, color2)
+
+    def setEngineState(self, state, locked=True):
+        """Toggles the vehicle engine on/off.
+
+        @param  state   bool    True for on, False for off
+        @param  locked  bool    True if the player shouldn't be able to turn it on again, False if not
+        """
+        # locked not implemented yet
+        return __orange__.SetVehicleEngineStatus(self.id, state)
 
     def setPosition(self, x, y, z):
         """Sets position.
