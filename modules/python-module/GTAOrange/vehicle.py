@@ -128,6 +128,13 @@ class Vehicle():
         else:
             return False
 
+    def getColors(self):
+        """Returns a tuple with the vehicle colors.
+
+        @returns    tuple   color tuple with 2 GTAOrange.color.Color objects
+        """
+        return __orange__.GetVehicleColours(self.id)
+
     def getDriver(self):
         """Returns driver's player id.
 
@@ -188,14 +195,14 @@ class Vehicle():
     def getPosition(self):
         """Returns current vehicle position.
 
-        @returns    tuple   position tuple with 3 values
+        @returns    tuple   position tuple with 3 float values
         """
         return __orange__.GetVehiclePosition(self.id)
 
     def getRotation(self):
         """Returns current vehicle rotation.
 
-        @returns    tuple   rotation tuple with 3 values
+        @returns    tuple   rotation tuple with 3 float values
         """
         return __orange__.GetVehicleRotation(self.id)
 
@@ -210,6 +217,14 @@ class Vehicle():
         else:
             self._ehandlers[event] = []
             self._ehandlers[event].append(_event.Event(cb))
+
+    def setColors(self, color1, color2):
+        """Sets vehicle colors.
+
+        @param  color1  GTAOrange.color.Color   first color
+        @param  color2  GTAOrange.color.Color   second color
+        """
+        return __orange__.SetVehicleColours(self.id, color1, color2)
 
     def setPosition(self, x, y, z):
         """Sets position.
