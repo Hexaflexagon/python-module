@@ -131,7 +131,7 @@ class Vehicle():
     def getColors(self):
         """Returns a tuple with the vehicle colors.
 
-        @returns    tuple   color tuple with 2 GTAOrange.color.Color objects
+        @returns    tuple   color tuple with 2 GTAOrange.hash.VehicleColor objects
         """
         return __orange__.GetVehicleColours(self.id)
 
@@ -221,8 +221,8 @@ class Vehicle():
     def setColors(self, color1, color2):
         """Sets vehicle colors.
 
-        @param  color1  GTAOrange.color.Color   first color
-        @param  color2  GTAOrange.color.Color   second color
+        @param  color1  GTAOrange.hash.VehicleColor     first color
+        @param  color2  GTAOrange.hash.VehicleColor     second color
         """
         return __orange__.SetVehicleColours(self.id, color1, color2)
 
