@@ -138,6 +138,12 @@ class Key():
     F23 = 0x86
     F24 = 0x87
 
+class VehicleColor(HashContainer):
+    """Enum-like class with attributes representing all available vehicle colors.
+    You can use the methods of the `HashContainer` class on this one as well.
+    See the docs for more info.
+    """
+    pass
 
 class Weapon(HashContainer):
     """Enum-like class with attributes representing all ingame weapons.
@@ -189,6 +195,7 @@ def loadHashContainer(container):
 
 
 # autoloaded hash databases
+VehicleColor.load("./modules/python-module/GTAOrange/colors.json", "vehicle_colors")
 Weapon.load("./modules/python-module/GTAOrange/weapons.json", "weapons")
 Gadget.load("./modules/python-module/GTAOrange/weapons.json", "gadgets")
 VehicleWeapon.load(
