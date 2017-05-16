@@ -192,6 +192,13 @@ class Vehicle():
         """
         return __orange__.GetVehiclePosition(self.id)
 
+    def getRotation(self):
+        """Returns current vehicle rotation.
+
+        @returns    tuple   rotation tuple with 3 values
+        """
+        return __orange__.GetVehicleRotation(self.id)
+
     def on(self, event, cb):
         """Subscribes for an event only for this vehicle.
 
@@ -212,6 +219,15 @@ class Vehicle():
         @param  z   float   z-coord
         """
         return __orange__.SetVehiclePosition(self.id, x, y, z)
+
+    def setRotation(self, rx, ry, rz):
+        """Sets rotation.
+
+        @param  rx  float   rotation in x direction
+        @param  ry  float   rotation in y direction
+        @param  rz  float   rotation in z direction
+        """
+        return __orange__.SetVehicleRotation(self.id, rx, ry, rz)
 
     def trigger(self, event, *args):
         """Triggers an event for the event handlers subscribing to this specific vehicle.
