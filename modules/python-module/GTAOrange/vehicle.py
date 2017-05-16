@@ -116,6 +116,18 @@ class Vehicle():
             x1, y1 = self.getPosition()
             return _world.getDistance(x1, y1, x, y)
 
+    def equals(self, veh):
+        """Checks if given object IS this object.
+
+        @param  veh     GTAOrange.vehicle.Vehicle   vehicle object
+
+        @returns    bool    True if it is the object, False if it isn't the object
+        """
+        if isinstance(veh, Vehicle):
+            return self.id == veh.id
+        else:
+            return False
+
     def getDriver(self):
         """Returns driver's player id.
 
@@ -179,18 +191,6 @@ class Vehicle():
         @returns    tuple   position tuple with 3 values
         """
         return __orange__.GetVehiclePosition(self.id)
-
-    def equals(self, veh):
-        """Checks if given object IS this object.
-
-        @param  veh     GTAOrange.vehicle.Vehicle   vehicle object
-
-        @returns    bool    True if it is the object, False if it isn't the object
-        """
-        if isinstance(veh, Vehicle):
-            return self.id == veh.id
-        else:
-            return False
 
     def on(self, event, cb):
         """Subscribes for an event only for this vehicle.
