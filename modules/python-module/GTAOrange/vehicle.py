@@ -160,6 +160,19 @@ class Vehicle():
 
             return occupants
 
+    def getPassengers(self):
+        """Returns a list of passengers currently sitting in the vehicle, NOT including the driver (since passengers are defined as not taking any responsibility for the car, actually).
+
+        @returns    list    list with all the passengers
+        """
+        passengers = self.getOccupants()
+        driver = self.getDriver()
+
+        if driver in passengers:
+            passengers.remove(driver)
+
+        return passengers
+
     def getPosition(self):
         """Returns current vehicle position.
 
