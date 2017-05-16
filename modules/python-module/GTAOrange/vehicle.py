@@ -204,6 +204,15 @@ class Vehicle():
             self._ehandlers[event] = []
             self._ehandlers[event].append(_event.Event(cb))
 
+    def setPosition(self, x, y, z):
+        """Sets position.
+
+        @param  x   float   x-coord
+        @param  y   float   y-coord
+        @param  z   float   z-coord
+        """
+        return __orange__.SetVehiclePosition(self.id, x, y, z)
+
     def trigger(self, event, *args):
         """Triggers an event for the event handlers subscribing to this specific vehicle.
 
