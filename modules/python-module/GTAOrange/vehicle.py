@@ -116,6 +116,18 @@ class Vehicle():
             x1, y1 = self.getPosition()
             return _world.getDistance(x1, y1, x, y)
 
+    def getDriver(self):
+        """Returns driver's player id.
+
+        @returns    int OR None     player id of driver (or None on failure)
+        """
+        driver = __orange__.GetVehicleDriver(self.id)
+
+        if driver is not None:
+            return getByID(driver)
+
+        return driver
+
     def getID(self):
         """Returns vehicle id.
 
