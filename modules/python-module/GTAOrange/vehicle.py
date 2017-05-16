@@ -213,6 +213,13 @@ class Vehicle():
         """
         return __orange__.GetVehicleRotation(self.id)
 
+    def getSirenState(self):
+        """Returns vehicle siren state.
+
+        @returns    bool    True for on, False for off
+        """
+        return __orange__.GetVehicleSirenState(self.id)
+
     def on(self, event, cb):
         """Subscribes for an event only for this vehicle.
 
@@ -259,6 +266,13 @@ class Vehicle():
         @param  rz  float   rotation in z direction
         """
         return __orange__.SetVehicleRotation(self.id, rx, ry, rz)
+
+    def setSirenState(self, state):
+        """Toggles the vehicle siren on/off. No problem if the vehicle hasn't got a siren, then nothing happens.
+
+        @param  state   bool    True for on, False for off
+        """
+        return __orange__.SetVehicleSirenState(self.id, state)
 
     def trigger(self, event, *args):
         """Triggers an event for the event handlers subscribing to this specific vehicle.
