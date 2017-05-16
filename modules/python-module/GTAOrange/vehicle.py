@@ -220,6 +220,13 @@ class Vehicle():
         """
         return __orange__.GetVehicleSirenState(self.id)
 
+    def getTyreBulletproofness(self):
+        """Checks if tyres are bulletproof or not.
+
+        @returns    bool    True for on, False for off
+        """
+        return __orange__.GetVehicleTyresBulletproof(self.id)
+
     def on(self, event, cb):
         """Subscribes for an event only for this vehicle.
 
@@ -273,6 +280,13 @@ class Vehicle():
         @param  state   bool    True for on, False for off
         """
         return __orange__.SetVehicleSirenState(self.id, state)
+
+    def setTyreBulletproofness(self, state):
+        """Toggles tyre bulletproof protection on/off.
+
+        @param  state   bool    True for on, False for off
+        """
+        return __orange__.SetVehicleTyresBulletproof(self.id, state)
 
     def trigger(self, event, *args):
         """Triggers an event for the event handlers subscribing to this specific vehicle.
