@@ -142,6 +142,24 @@ class Vehicle():
         """
         return self.model
 
+    def getOccupants(self):
+        """Returns a list of the occupants currently sitting in the vehicle, including the driver.
+
+        @returns    list    list with all the passengers
+        """
+        occupant_list = __orange__.GetVehiclePassengers(self.id)
+
+        # check first if this is an int, because most of the time only the driver is in the car
+        if isinstance(occupant_list, int):
+            return [getByID(occupant_list)]
+        else:
+            occupants = []
+
+            for occupant in occupant_list:
+                occupants.append(getByID(occupant))
+
+            return occupants
+
     def getPosition(self):
         """Returns current vehicle position.
 
