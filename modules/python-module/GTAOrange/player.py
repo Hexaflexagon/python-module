@@ -458,7 +458,7 @@ def _onKeyPress(player_id, key_id):
     player.trigger("pressedkey", key_id)
 
 
-def _onClientEvent(player_id, event_name, *args):
+def _onClientEvent(event_name, player_id, *args):
     player = getByID(player_id)
 
     trigger("clientevent", player, event_name, *args)
