@@ -178,13 +178,15 @@ class Vehicle():
         # check first if this is an int, because most of the time only the driver is in the car
         if isinstance(occupant_list, int):
             return [getByID(occupant_list)]
-        else:
+        elif isinstance(occupant_list, list):
             occupants = []
 
             for occupant in occupant_list:
                 occupants.append(getByID(occupant))
 
             return occupants
+        else:
+            return []
 
     def getPassengers(self):
         """Returns a list of passengers currently sitting in the vehicle, NOT including the driver (since passengers are defined as not taking any responsibility for the car, actually).
