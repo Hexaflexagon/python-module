@@ -143,7 +143,7 @@ class Vehicle():
         driver = __orange__.GetVehicleDriver(self.id)
 
         if driver is not None:
-            return getByID(driver)
+            return _player.getByID(driver)
 
         return driver
 
