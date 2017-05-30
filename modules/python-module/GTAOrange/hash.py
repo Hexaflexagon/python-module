@@ -25,6 +25,8 @@ class HashContainer():
     @classmethod
     def getHashByString(cls, string):
         if cls.loaded:
+            string = string.upper()
+
             if string in cls.objects.keys():
                 return cls.objects[string]
             else:
