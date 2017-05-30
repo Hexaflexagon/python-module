@@ -42,13 +42,4 @@ def _onServerUnload(p0):
     trigger("unload", p0)
 
 
-def _onClientTriggeredEvent(event, player_id, *args):
-    if event.lower() not in __forbidden_event_names:
-        from GTAOrange import player as _player
-
-        player = _player.getByID(player_id)
-        trigger(event, player, *args)
-
-
 __orange__.AddServerEvent(_onServerUnload, "ServerUnload")
-__orange__.AddServerEvent(_onClientTriggeredEvent, "serverEvent")
