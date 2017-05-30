@@ -63,7 +63,7 @@ class Player():
     def attachBlip(self, blip):
         """Attaches the given blip to the player.
 
-        @param  GTAOrange.blip.blip     blip object
+        @param  blip    GTAOrange.blip.blip     blip object
 
         @returns    bool    True for success, False for failure
         """
