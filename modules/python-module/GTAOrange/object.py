@@ -59,7 +59,7 @@ class Object():
             return False
 
 
-def create(model, x, y, z, pitch, yaw, roll):
+def create(model, x, y, z, pitch=0.0, yaw=0.0, roll=0.0):
     """Creates a new object.
 
     This is the right way to spawn a new object.
@@ -68,9 +68,9 @@ def create(model, x, y, z, pitch, yaw, roll):
     @param  x       float       x-coord
     @param  y       float       y-coord
     @param  z       float       z-coord
-    @param  pitch   float       pitch angle (y rotation)
-    @param  yaw     float       yaw angle (z rotation, heading)
-    @param  roll    float       roll angle (x rotation)
+    @param  pitch   float       pitch angle (y rotation) #optional
+    @param  yaw     float       yaw angle (z rotation, heading) #optional
+    @param  roll    float       roll angle (x rotation) #optional
 
     @returns    GTAOrange.object.Object     object object
     """
