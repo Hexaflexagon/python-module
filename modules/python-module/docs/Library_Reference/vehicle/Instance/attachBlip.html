@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>       <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>          <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>          <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>attachBlip - GTA Orange Python Module</title>
+    <meta name="description" content="GTA Orange Python Module API Reference" />
+    <meta name="author" content="GTA:Orange Team">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../../themes/daux/img/favicon-blue.png" type="image/x-icon">
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link href='../../../themes/daux/css/theme-blue.min.css' rel='stylesheet' type='text/css'>
+            <!-- Tipue Search -->
+        <link href="../../../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="">
+    
+<header class="Navbar hidden-print">
+    <a class="Navbar__brand" href="../../../index.html">GTA Orange Python Module</a>
+
+    <div class="Search">
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+    </div>
+</header>
+<div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <div class="Collapsible__container">
+            <button type="button" class="Button Collapsible__trigger">
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+            </button>
+        </div>
+
+        <div class="Collapsible__content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item  has-children'><a href="../../../Getting_Started/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Getting Started</a><ul class='Nav'><li class='Nav__item '><a href="../../../Getting_Started/Download_&_Install.html">Download & Install</a></li><li class='Nav__item '><a href="../../../Getting_Started/Hello_World.html">Hello World</a></li><li class='Nav__item '><a href="../../../Getting_Started/Event_Handling.html">Event Handling</a></li><li class='Nav__item '><a href="../../../Getting_Started/Client_Server_Communication.html">Client Server Communication</a></li><li class='Nav__item '><a href="../../../Getting_Started/MySQL_Example.html">MySQL Example</a></li><li class='Nav__item '><a href="../../../Getting_Started/Threading_Example.html">Threading Example</a></li><li class='Nav__item '><a href="../../../Getting_Started/Hash_Library.html">Hash Library</a></li><li class='Nav__item '><a href="../../../Getting_Started/Using_Global_Interpreters.html">Using Global Interpreters</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../../../Library_Reference/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Library Reference</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../../../Library_Reference/player/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>player</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/player/broadcast.html">broadcast</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/getAll.html">getAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/getByID.html">getByID</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/getByName.html">getByName</a></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/player/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/attachBlip.html">attachBlip</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/broadcast.html">broadcast</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/chatMsg.html">chatMsg</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/disableHUD.html">disableHUD</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/distanceTo.html">distanceTo</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/enableHUD.html">enableHUD</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getHeading.html">getHeading</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getHealth.html">getHealth</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getID.html">getID</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getModel.html">getModel</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getMoney.html">getMoney</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getName.html">getName</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/getPosition.html">getPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/giveAmmo.html">giveAmmo</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/giveMoney.html">giveMoney</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/giveWeapon.html">giveWeapon</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/isInMarker.html">isInMarker</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/removeWeapons.html">removeWeapons</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/resetMoney.html">resetMoney</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/sendNotification.html">sendNotification</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setArmour.html">setArmour</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setHeading.html">setHeading</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setHealth.html">setHealth</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setInfoMsg.html">setInfoMsg</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setIntoVeh.html">setIntoVeh</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setModel.html">setModel</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setMoney.html">setMoney</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setName.html">setName</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/setPosition.html">setPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/trigger.html">trigger</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/Instance/triggerClient.html">triggerClient</a></li></ul></li><li class='Nav__item '><a href="../../../Library_Reference/player/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/trigger.html">trigger</a></li><li class='Nav__item '><a href="../../../Library_Reference/player/triggerClient.html">triggerClient</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../../../Library_Reference/vehicle/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>vehicle</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/vehicle/create.html">create</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/deleteByID.html">deleteByID</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/getAll.html">getAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/getByID.html">getByID</a></li><li class='Nav__item Nav__item--open has-children'><a href="../../../Library_Reference/vehicle/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../../../Library_Reference/vehicle/Instance/attachBlip.html">attachBlip</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/attachText.html">attachText</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/delete.html">delete</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/distanceTo.html">distanceTo</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/equals.html">equals</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getColors.html">getColors</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getDriver.html">getDriver</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getEngineState.html">getEngineState</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getID.html">getID</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getModel.html">getModel</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getOccupants.html">getOccupants</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getPassengers.html">getPassengers</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getPosition.html">getPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getRotation.html">getRotation</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getSirenState.html">getSirenState</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/getTyreBulletproofness.html">getTyreBulletproofness</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/setColors.html">setColors</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/setEngineState.html">setEngineState</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/setPosition.html">setPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/setRotation.html">setRotation</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/setSirenState.html">setSirenState</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/setTyreBulletproofness.html">setTyreBulletproofness</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/Instance/trigger.html">trigger</a></li></ul></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/vehicle/trigger.html">trigger</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/marker/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>marker</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/marker/create.html">create</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/deleteByID.html">deleteByID</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/getAll.html">getAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/getByID.html">getByID</a></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/marker/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/marker/Instance/delete.html">delete</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/Instance/distanceTo.html">distanceTo</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/Instance/getID.html">getID</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/Instance/getPosition.html">getPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/Instance/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/Instance/trigger.html">trigger</a></li></ul></li><li class='Nav__item '><a href="../../../Library_Reference/marker/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/marker/trigger.html">trigger</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/object/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>object</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/object/create.html">create</a></li><li class='Nav__item '><a href="../../../Library_Reference/object/deleteByID.html">deleteByID</a></li><li class='Nav__item '><a href="../../../Library_Reference/object/getAll.html">getAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/object/getByID.html">getByID</a></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/object/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/object/Instance/delete.html">delete</a></li><li class='Nav__item '><a href="../../../Library_Reference/object/Instance/equals.html">equals</a></li><li class='Nav__item '><a href="../../../Library_Reference/object/Instance/getID.html">getID</a></li></ul></li><li class='Nav__item '><a href="../../../Library_Reference/object/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/object/trigger.html">trigger</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/blip/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>blip</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/blip/create.html">create</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/createBlipForAll.html">createBlipForAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/createBlipForPlayerOnly.html">createBlipForPlayerOnly</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/deleteByID.html">deleteByID</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/getAll.html">getAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/getByID.html">getByID</a></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/blip/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/attachTo.html">attachTo</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/delete.html">delete</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/distanceTo.html">distanceTo</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/getID.html">getID</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/getPosition.html">getPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/setColor.html">setColor</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/setRoute.html">setRoute</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/setScale.html">setScale</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/setShortRange.html">setShortRange</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/Instance/setSprite.html">setSprite</a></li></ul></li><li class='Nav__item '><a href="../../../Library_Reference/blip/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/blip/trigger.html">trigger</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/text/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>text</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/text/create.html">create</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/deleteByID.html">deleteByID</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/getAll.html">getAll</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/getByID.html">getByID</a></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/text/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/text/Instance/delete.html">delete</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/Instance/getColors.html">getColors</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/Instance/getID.html">getID</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/Instance/getPosition.html">getPosition</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/Instance/getSize.html">getSize</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/Instance/getText.html">getText</a></li></ul></li><li class='Nav__item '><a href="../../../Library_Reference/text/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/text/trigger.html">trigger</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/server/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>server</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/server/on.html">on</a></li><li class='Nav__item '><a href="../../../Library_Reference/server/trigger.html">trigger</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/debug/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>debug</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/debug/dump.html">dump</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/event/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>event</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../../../Library_Reference/event/Instance/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Instance</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/event/Instance/cancel.html">cancel</a></li><li class='Nav__item '><a href="../../../Library_Reference/event/Instance/getCallback.html">getCallback</a></li></ul></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/hash/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>hash</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/hash/loadHashContainer.html">loadHashContainer</a></li></ul></li><li class='Nav__item  has-children'><a href="../../../Library_Reference/world/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>world</a><ul class='Nav'><li class='Nav__item '><a href="../../../Library_Reference/world/getDistance.html">getDistance</a></li></ul></li></ul></li><li class='Nav__item  has-children'><a href="../../../Event_Reference/index.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Event Reference</a><ul class='Nav'><li class='Nav__item '><a href="../../../Event_Reference/player.html">player</a></li><li class='Nav__item '><a href="../../../Event_Reference/vehicle.html">vehicle</a></li><li class='Nav__item '><a href="../../../Event_Reference/marker.html">marker</a></li></ul></li></ul>
+
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://github.com/Hexaflexagon/gtao-python-module" target="_blank">GitHub repo</a>
+                        <br />
+                                            <a href="http://gta-orange.net/" target="_blank">GTA:Orange Website</a>
+                        <br />
+                                    
+                
+                            </div>
+        </div>
+    </aside>
+    <div class="Columns__right ">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../../../Library_Reference/index.html">Library Reference</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../../Library_Reference/vehicle/index.html">vehicle</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../../Library_Reference/vehicle/Instance/index.html">Instance</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../../Library_Reference/vehicle/Instance/attachBlip.html">attachBlip</a></h1>
+                    </div>
+
+
+    <div class="s-content">
+        <h3 id="page_Description%3A">Description:</h3>
+<p>Creates and attaches a blip to the vehicle.</p>
+<h3 id="page_Reference%3A">Reference:</h3>
+<pre><code class="python">obj.attachBlip(name, scale, color, sprite)</code></pre>
+<p><strong>Arguments:</strong></p>
+<ol>
+<li>
+<strong>name (<em>str</em>)</strong> - blip name #optional</li>
+<li>
+<strong>scale (<em>float</em>)</strong> - blip scale #optional</li>
+<li>
+<strong>color (<em>GTAOrange.blip.Color</em>)</strong> - blip color (see blip library -&gt; classes at the eof) #optional</li>
+<li>
+<strong>sprite (<em>GTAOrange.blip.Sprite</em>)</strong> - blip sprite (see blip library -&gt; classes at the eof) #optional</li>
+</ol>
+<p><strong>Return value:</strong></p>
+<ul>
+<li>
+<a href="index.html"><strong><em>Blip</em></strong></a> object</li>
+</ul>
+<p>{usage}</p>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../../../Library_Reference/vehicle/Instance/index.html">Previous</a></li>            <li class=Pager--next><a href="../../../Library_Reference/vehicle/Instance/attachText.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- jQuery -->
+    <script src="../../../themes/daux/js/jquery-1.11.3.min.js"></script>
+
+    <!-- hightlight.js -->
+    <script src="../../../themes/daux/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- JS -->
+    
+    <script src="../../../themes/daux/js/daux.js"></script>
+
+            <!-- Tipue Search -->
+        <script type="text/javascript" src="../../../tipuesearch/tipuesearch.js"></script>
+
+        <script>
+            window.onunload = function(){}; // force $(document).ready to be called on back/forward navigation in firefox
+            $(function() {
+                tipuesearch({
+                    'base_url': '../../../'
+                });
+            });
+        </script>
+    
+</body>
+</html>
