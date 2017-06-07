@@ -426,7 +426,7 @@ def _onDisconnect(player_id, reason):
     del __pool[player_id]
 
 
-def _onCommand(*args):
+def _onPlayerCommand(*args):
     # replace first arg (player id) with player obj
     args = list(args)
     player = getByID(args[0])
@@ -461,13 +461,25 @@ def _onKeyPress(player_id, key_id):
 def _onClientEvent(event_name, player_id, *args):
     player = getByID(player_id)
 
+    # workaround for outsourced chat as resource
+    if event_name == "chat:msg":
+        _onChatMessage(player, *args)
+
     trigger("clientevent", player, event_name, *args)
     player.trigger("clientevent", event_name, *args)
 
 
+# workaround for outsourced chat as resource
+def _onChatMessage(player, message):
+    if message.startswith("/"):
+        trigger("command", player, message)
+        player.trigger("command", message)
+
+
+# built-in server events
 __orange__.AddServerEvent(_onConnect, "PlayerConnect")
 __orange__.AddServerEvent(_onDisconnect, "PlayerDisconnect")
-__orange__.AddServerEvent(_onCommand, "PlayerCommand")
+__orange__.AddServerEvent(_onPlayerCommand, "PlayerCommand")
 __orange__.AddServerEvent(_onDeath, "PlayerDead")
 __orange__.AddServerEvent(_onSpawn, "PlayerSpawn")
 __orange__.AddServerEvent(_onKeyPress, "keyPress")
