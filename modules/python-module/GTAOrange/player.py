@@ -69,6 +69,16 @@ class Player():
         """
         return blip.attachTo(self)
 
+    def chatMsg(self, msg):
+        """Sends a chat message to the player.
+
+        @param  msg     string  message string
+        """
+        # outdated
+        __orange__.SendClientMessage(self.id, "{FFFFFF}" + msg, 255)
+        # workaround for outsourced chat as resource
+        self.triggerClient("chat:msg", False, msg)
+
     def distanceTo(self, x, y, z=None):
         """Returns the distance from player to the given coordinates.
 
@@ -180,13 +190,6 @@ class Player():
         @param  msg     string  message string
         """
         __orange__.SendPlayerNotification(self.id, msg)
-
-    def chatMsg(self, msg):
-        """Sends a chat message to the player.
-
-        @param  msg     string  message string
-        """
-        __orange__.SendClientMessage(self.id, "{FFFFFF}" + msg, 255)
 
     def setArmour(self, armour):
         """Sets armour.
@@ -479,6 +482,7 @@ def _onChatMessage(player, message):
 # built-in server events
 __orange__.AddServerEvent(_onConnect, "PlayerConnect")
 __orange__.AddServerEvent(_onDisconnect, "PlayerDisconnect")
+# outdated
 __orange__.AddServerEvent(_onPlayerCommand, "PlayerCommand")
 __orange__.AddServerEvent(_onDeath, "PlayerDead")
 __orange__.AddServerEvent(_onSpawn, "PlayerSpawn")
