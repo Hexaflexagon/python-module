@@ -1,0 +1,8 @@
+/*.*
+!.gitignore
+*__pycache__*
+modules/*
+!modules/python-module/
+resources/*
+!resources/python_example/
+modules/python-module/bin/python36.zip
