@@ -167,6 +167,16 @@ class Player():
 
         return _world.getDistance(x1, y1, x2, y2) < 0.5 and (z1 - z2) * (z1 - z2) < (0.5 * 0.5)
 
+    def kick(self, reason=None):
+        """Kicks the player from the server, with or without a reason.
+
+        @param  reason  string      reason message
+        """
+        if reason is None:
+            return __orange__.KickPlayer(self.id)
+        else:
+            return __orange__.KickPlayer(self.id, reason)
+
     def removeWeapons(self):
         """Removes all weapons from a player.
         """
